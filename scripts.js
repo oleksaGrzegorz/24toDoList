@@ -6,7 +6,7 @@ let tasks = [];
 const markDoneButtons = document.querySelectorAll(".markDoneButton");
 
 function markTaskDone() {
-console.log("kliknieto");
+console.log("kliknietrr");
 };
 
 
