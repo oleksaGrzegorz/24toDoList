@@ -42,3 +42,7 @@ body {
   background-color: teal;
   color: white;
 }
+
+.done {
+  text-decoration: line-through;
+}
