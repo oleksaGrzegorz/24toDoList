@@ -3,12 +3,10 @@ const taskListElement = document.querySelector(".taskList");
 let inputElement = document.querySelector(".input");
 let tasks = [];
 
-const markDoneButtons = document.querySelectorAll(".markDoneButton");
-
-function markTaskDone() {
-console.log("kliknietrr");
-};
-
+function markTaskDone(event) {
+  const taskItem = event.target.closest("li");
+  taskItem.classList.toggle("done");
+}
 
 function addTask(event) {
   event.preventDefault();
@@ -21,9 +19,9 @@ function addTask(event) {
     .join("");
   inputElement.value = "";
 
-  markDoneButtons.forEach((button) => {
+  document.querySelectorAll(".markDoneButton").forEach((button) => {
     button.addEventListener("click", markTaskDone);
   });
-};
+}
 
 buttonElement.addEventListener("click", addTask);
