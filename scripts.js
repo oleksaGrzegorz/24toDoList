@@ -1,7 +1,16 @@
 const buttonElement = document.querySelector(".js-button");
 const taskListElement = document.querySelector(".taskList");
 let inputElement = document.querySelector(".input");
-let tasks = [];
+let tasks = [
+  {
+    name: "kup mleko",
+    done: false,
+  },
+  {
+    name: "kup chleb",
+    done: false,
+  },
+];
 
 function init() {
   console.log("init");
@@ -14,7 +23,7 @@ function render() {
   taskListElement.innerHTML = tasks
     .map(
       (zadanie) =>
-        `<li>${zadanie}<button class="markDoneButton">Zakończ</button><button>Usuń</button></li>`
+        `<li>${zadanie.name}<button class="markDoneButton">Zakończ</button><button>Usuń</button></li>`
     )
     .join("");
   inputElement.value = "";
@@ -28,7 +37,7 @@ function onFormSubmit(event) {
 function addTask() {
   const trimmedInput = inputElement.value.trim();
   if (trimmedInput) {
-    tasks.push(trimmedInput);
+    tasks.push({name: trimmedInput});
   }
   render();
 }
