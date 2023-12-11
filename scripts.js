@@ -1,4 +1,5 @@
-const buttonElement = document.querySelector(".js-button");
+{
+  const buttonElement = document.querySelector(".js-button");
 const taskListElement = document.querySelector(".taskList");
 let inputElement = document.querySelector(".input");
 let tasks = [
@@ -23,7 +24,10 @@ function render() {
   taskListElement.innerHTML = tasks
     .map(
       (zadanie) =>
-        `<li>${zadanie.name}<button class="markDoneButton">Zakończ</button><button>Usuń</button></li>`
+      `<li>${zadanie.name}
+        <button class="markDoneButton">Zakończ</button>
+        <button>Usuń</button>
+      </li>`
     )
     .join("");
   inputElement.value = "";
@@ -42,4 +46,9 @@ function addTask() {
   render();
 }
 
+function markAsDone() {
+
+};
+
 init();
+}
