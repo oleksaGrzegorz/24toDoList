@@ -5,7 +5,7 @@ let inputElement = document.querySelector(".input");
 let tasks = [
   {
     name: "kup mleko",
-    done: false,
+    done: true,
   },
   {
     name: "kup chleb",
@@ -24,7 +24,7 @@ function render() {
   taskListElement.innerHTML = tasks
     .map(
       (zadanie) =>
-      `<li>${zadanie.name}
+      `<li class="${zadanie.done ? 'done' : 'xxx'}">${zadanie.name}
         <button class="js-markDoneButton">Zakończ</button>
         <button class="js-removeButton">Usuń</button>
       </li>`
@@ -58,11 +58,13 @@ function addTask() {
 
 
 function markTaskAsDone(index) {
-console.log(`Kliknieto przycisk zakoncz${index}`);
+  tasks[index].done = !tasks[index].done;
+console.log(`ukonczone? ${index} - ${tasks[index].done}`);
+render();
 };
 
 function removeTask(index) {
-  console.log(`Kliknieto przycisk usun${index}`);
+  console.log(`Kliknieto przycisk usun ${index}`);
 };
 
 init();
