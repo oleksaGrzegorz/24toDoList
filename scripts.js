@@ -3,14 +3,14 @@ const taskListElement = document.querySelector(".taskList");
 let inputElement = document.querySelector(".input");
 let tasks = [];
 
-function markTaskDone(event) {
-  const taskItem = event.target.closest("li");
-  taskItem.classList.toggle("done");
+function init() {
+  console.log("init");
+  buttonElement.addEventListener("click", onFormSubmit);
+  render();
 }
 
-function addTask(event) {
-  event.preventDefault();
-  tasks.push(inputElement.value);
+function render() {
+  console.log("render");
   taskListElement.innerHTML = tasks
     .map(
       (zadanie) =>
@@ -18,10 +18,19 @@ function addTask(event) {
     )
     .join("");
   inputElement.value = "";
-
-  document.querySelectorAll(".markDoneButton").forEach((button) => {
-    button.addEventListener("click", markTaskDone);
-  });
 }
 
-buttonElement.addEventListener("click", addTask);
+function onFormSubmit(event) {
+  event.preventDefault();
+  addTask();
+}
+
+function addTask() {
+  const trimmedInput = inputElement.value.trim();
+  if (trimmedInput) {
+    tasks.push(trimmedInput);
+  }
+  render();
+}
+
+init();
