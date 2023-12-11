@@ -25,12 +25,17 @@ function render() {
     .map(
       (zadanie) =>
       `<li>${zadanie.name}
-        <button class="markDoneButton">Zakończ</button>
+        <button class="js-markDoneButton">Zakończ</button>
         <button>Usuń</button>
       </li>`
     )
     .join("");
   inputElement.value = "";
+
+  const markDoneButtons = document.querySelectorAll(".js-markDoneButton");
+  markDoneButtons.forEach((button, index) => {
+    button.addEventListener("click", () => markAsDone(index));
+  });
 }
 
 function onFormSubmit(event) {
@@ -46,8 +51,10 @@ function addTask() {
   render();
 }
 
-function markAsDone() {
 
+
+function markAsDone() {
+console.log("Kliknieto przycisk zakoncz");
 };
 
 init();
