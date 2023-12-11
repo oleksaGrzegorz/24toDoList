@@ -26,7 +26,7 @@ function render() {
       (zadanie) =>
       `<li>${zadanie.name}
         <button class="js-markDoneButton">Zakończ</button>
-        <button>Usuń</button>
+        <button class="js-removeButton">Usuń</button>
       </li>`
     )
     .join("");
@@ -34,7 +34,12 @@ function render() {
 
   const markDoneButtons = document.querySelectorAll(".js-markDoneButton");
   markDoneButtons.forEach((button, index) => {
-    button.addEventListener("click", () => markAsDone(index));
+    button.addEventListener("click", () => markTaskAsDone(index));
+  });
+
+  const removeButtons = document.querySelectorAll(".js-removeButton");
+ removeButtons.forEach((button, index) => {
+    button.addEventListener("click", () => removeTask(index));
   });
 }
 
@@ -52,9 +57,12 @@ function addTask() {
 }
 
 
+function markTaskAsDone(index) {
+console.log(`Kliknieto przycisk zakoncz${index}`);
+};
 
-function markAsDone() {
-console.log("Kliknieto przycisk zakoncz");
+function removeTask(index) {
+  console.log(`Kliknieto przycisk usun${index}`);
 };
 
 init();
